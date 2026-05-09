@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Inspire Lead Change</title>
+<meta name="description" content="Get in touch with Inspire Lead Change. Email info@inspireleadchange.com or book a 30-minute discovery call.">
+<meta name="theme-color" content="#0E2841">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="Inspire Lead Change home">
+      <img class="brand-mark" src="assets/logo.svg" alt="">
+      <span class="brand-text">Inspire Lead Change<small>Route to Excellence</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="what-we-do.html">What we do</a>
+      <a href="our-approach.html">Our approach</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active btn btn-primary">Get in touch <span class="arrow">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1>Let's start a conversation.</h1>
+    <p>Tell us where you are and where you want to be. A first call is a 30-minute conversation, not a sales pitch.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contact-row">
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Email</h3>
+        <a href="mailto:info@inspireleadchange.com">info@inspireleadchange.com</a>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Based in</h3>
+        <p style="color: var(--ink);">Haarlem, Netherlands<br><span style="color: var(--ink-soft); font-size: .9rem;">Working with clients worldwide</span></p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Response time</h3>
+        <p style="color: var(--ink);">Within one business day<br><span style="color: var(--ink-soft); font-size: .9rem;">Mon–Fri, CET</span></p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="section-head" style="margin-bottom: 28px;">
+        <span class="eyebrow">Send us a message</span>
+        <h2 style="font-size: 1.6rem;">Tell us a little about your challenge.</h2>
+      </div>
+
+      <div class="form-success" id="form-success">Thanks — your message is ready. Click your email client to send.</div>
+
+      <form id="contact-form" novalidate>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" autocomplete="organization">
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="role">Your role</label>
+            <input type="text" id="role" name="role" autocomplete="organization-title">
+          </div>
+        </div>
+        <div class="field">
+          <label for="topic">What can we help with?</label>
+          <select id="topic" name="topic">
+            <option value="">Select an area…</option>
+            <option>Operational excellence</option>
+            <option>Leadership development</option>
+            <option>Performance dashboards (early access)</option>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="A few sentences about where you are and what you'd like to change." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message <span class="arrow">→</span></button>
+        <p style="text-align: center; font-size: .82rem; color: var(--ink-soft); margin-top: 14px;">
+          Or just email <a href="mailto:info@inspireleadchange.com" style="color: var(--green); font-weight: 500;">info@inspireleadchange.com</a> directly.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="brand">
+          <img class="brand-mark" src="assets/logo.svg" alt="">
+          <span class="brand-text">Inspire Lead Change<small>Route to Excellence</small></span>
+        </div>
+        <p class="tag">Coaching-led operational excellence and leadership development for organisations that demand more.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="what-we-do.html">What we do</a>
+        <a href="our-approach.html">Our approach</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <a href="mailto:info@inspireleadchange.com">info@inspireleadchange.com</a>
+        <a href="contact.html">Book a discovery call</a>
+        <p class="tag" style="margin-top: 14px;">Based in Haarlem, Netherlands · Working with clients worldwide.</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="year"></span> Inspire Lead Change. All rights reserved.</span>
+      <span>ILC · Haarlem, Netherlands</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
