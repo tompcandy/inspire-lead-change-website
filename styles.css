@@ -27,8 +27,8 @@ a { color: inherit; text-decoration: none; }
   --gutter:     clamp(20px, 4vw, 48px);
   --radius:     12px;
 
-  --font-head:  'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-body:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-head:  'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:  'Josefin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --shadow-sm:  0 1px 2px rgba(14,40,65,.05), 0 2px 8px rgba(14,40,65,.06);
   --shadow-md:  0 4px 12px rgba(14,40,65,.08), 0 12px 32px rgba(14,40,65,.10);
