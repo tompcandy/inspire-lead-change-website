@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What we do — Inspire Lead Change</title>
-<meta name="description" content="Three pillars to excellence — Operational Excellence, Performance Intelligence, and Leadership Development. Coaching-led programmes from Inspire Lead Change (ILC).">
+<title data-i18n="w.meta.title">What we do — Inspire Lead Change</title>
+<meta name="description" data-i18n-content="w.meta.desc" content="Three pillars to excellence — Operational Excellence, Performance Intelligence, and Leadership Development. Coaching-led programmes from Inspire Lead Change (ILC).">
 <meta name="theme-color" content="#0E2841">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,24 +19,37 @@
     <a href="index.html" class="brand" aria-label="Inspire Lead Change — Route to Excellence">
       <img class="brand-logo" src="assets/logo.svg" alt="Inspire Lead Change">
     </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+    <nav class="nav-links" id="primary-nav">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="what-we-do.html" class="active" data-i18n="nav.what">What we do</a>
+      <a href="our-approach.html" data-i18n="nav.approach">Our approach</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="contact.html" class="btn btn-primary" data-i18n="nav.contact">Get in touch <span class="arrow">→</span></a>
+    </nav>
+    <div class="lang-switch">
+      <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Change language" data-i18n-aria="lang.label">
+        <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span class="code">EN</span>
+        <span class="caret">▾</span>
+      </button>
+      <div class="lang-menu" role="menu">
+        <button type="button" data-lang="en" aria-current="true">English</button>
+        <button type="button" data-lang="nl">Nederlands</button>
+        <button type="button" data-lang="de">Deutsch</button>
+        <button type="button" data-lang="fr">Français</button>
+      </div>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu" data-i18n-aria="nav.menu">
       <span></span><span></span><span></span>
     </button>
-    <nav class="nav-links" id="primary-nav">
-      <a href="index.html">Home</a>
-      <a href="what-we-do.html" class="active">What we do</a>
-      <a href="our-approach.html">Our approach</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
-    </nav>
   </div>
 </header>
 
 <section class="page-head">
   <div class="container">
-    <span class="eyebrow">What we do</span>
-    <h1>Three pillars to excellence.</h1>
-    <p>Inspire Lead Change partners with organisations to lift performance through three independent, complementary offerings. Each can be delivered on its own to address a specific need, or combined to create a step-change in how your business operates.</p>
+    <span class="eyebrow" data-i18n="nav.what">What we do</span>
+    <h1 data-i18n="wwd.title">Three pillars to excellence.</h1>
+    <p data-i18n="w.head.sub">Inspire Lead Change partners with organisations to lift performance through three independent, complementary offerings. Each can be delivered on its own to address a specific need, or combined to create a step-change in how your business operates.</p>
   </div>
 </section>
 
@@ -44,16 +57,16 @@
 <section>
   <div class="container split">
     <div>
-      <span class="eyebrow">Pillar 01 · Operational Excellence</span>
-      <h2>A self-sustaining culture of performance.</h2>
-      <p class="lead mt-2">A coaching-led programme that builds the habits, beliefs and systems for sustained performance. We help organisations move from one-off improvement to a culture of excellence by working through six connected elements — from setting the right performance focus to handing ownership to your own internal coaches.</p>
+      <span class="eyebrow" data-i18n="w.p1.eyebrow">Pillar 01 · Operational Excellence</span>
+      <h2 data-i18n="w.p1.title">A self-sustaining culture of performance.</h2>
+      <p class="lead mt-2" data-i18n="w.p1.lead">A coaching-led programme that builds the habits, beliefs and systems for sustained performance. We help organisations move from one-off improvement to a culture of excellence by working through six connected elements — from setting the right performance focus to handing ownership to your own internal coaches.</p>
       <ul class="tick-list mt-3">
-        <li>Begin with the end in mind — clarity of performance and the metrics that matter</li>
-        <li>Inspire change through trust — credibility, reliability and intimacy in every leader</li>
-        <li>Build a positive belief system — because results are rooted in what people believe</li>
-        <li>Embed leadership excellence habits — small, repeated behaviours that shape culture</li>
+        <li data-i18n="w.p1.li1">Begin with the end in mind — clarity of performance and the metrics that matter</li>
+        <li data-i18n="w.p1.li2">Inspire change through trust — credibility, reliability and intimacy in every leader</li>
+        <li data-i18n="w.p1.li3">Build a positive belief system — because results are rooted in what people believe</li>
+        <li data-i18n="w.p1.li4">Embed leadership excellence habits — small, repeated behaviours that shape culture</li>
       </ul>
-      <p class="mt-3" style="color: var(--green); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .85rem;">Outcome — a self-sustaining culture of performance, owned and maintained</p>
+      <p class="mt-3" style="color: var(--green); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .85rem;" data-i18n="w.p1.outcome">Outcome — a self-sustaining culture of performance, owned and maintained</p>
     </div>
     <div class="illustration">
       <!-- Gear with upward arrows + checkmark — Operational Excellence -->
@@ -140,19 +153,19 @@
       </svg>
     </div>
     <div>
-      <span class="eyebrow">Pillar 02 · Performance Intelligence</span>
-      <h2>Leaders who see, hear and act on the data every day.</h2>
-      <p class="lead mt-2">Data alone does not drive performance — engagement with data does. We design gamified scoreboards with AI built in, giving deep analysis and prioritisation for all levels of leadership.</p>
-      <p>Every leader gets a tailored app that captures real-life data, builds standards, and uses an AI voice to talk through what's going on in the numbers.</p>
+      <span class="eyebrow" data-i18n="w.p2.eyebrow">Pillar 02 · Performance Intelligence</span>
+      <h2 data-i18n="w.p2.title">Leaders who see, hear and act on the data every day.</h2>
+      <p class="lead mt-2" data-i18n="w.p2.lead">Data alone does not drive performance — engagement with data does. We design gamified scoreboards with AI built in, giving deep analysis and prioritisation for all levels of leadership.</p>
+      <p data-i18n="w.p2.p">Every leader gets a tailored app that captures real-life data, builds standards, and uses an AI voice to talk through what's going on in the numbers.</p>
       <ul class="tick-list mt-3">
-        <li>Ownership of data pushed down to the people who can act on it</li>
-        <li>Performance becomes everyone's daily focus — not just management's</li>
-        <li>Healthy competition and recognition that drive sustained engagement</li>
-        <li>Every leader has their own personal AI assistant connected to your data</li>
+        <li data-i18n="w.p2.li1">Ownership of data pushed down to the people who can act on it</li>
+        <li data-i18n="w.p2.li2">Performance becomes everyone's daily focus — not just management's</li>
+        <li data-i18n="w.p2.li3">Healthy competition and recognition that drive sustained engagement</li>
+        <li data-i18n="w.p2.li4">Every leader has their own personal AI assistant connected to your data</li>
       </ul>
-      <p class="mt-3" style="color: var(--green); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .85rem;">Outcome — leaders who see, hear and act on the data every day</p>
+      <p class="mt-3" style="color: var(--green); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .85rem;" data-i18n="w.p2.outcome">Outcome — leaders who see, hear and act on the data every day</p>
       <div class="mt-3">
-        <a href="contact.html" class="btn btn-outline">Talk to us about early access <span class="arrow">→</span></a>
+        <a href="contact.html" class="btn btn-outline" data-i18n="w.p2.btn">Talk to us about early access <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -162,16 +175,16 @@
 <section>
   <div class="container split">
     <div>
-      <span class="eyebrow">Pillar 03 · Leadership Development</span>
-      <h2>A leadership team that role-models the behaviours.</h2>
-      <p class="lead mt-2">We develop leaders who can role-model the behaviours, habits and mindset required for excellence. Programmes are tailored to each leader's strengths and context, and are reinforced through ongoing coaching so development becomes habit, not theory.</p>
+      <span class="eyebrow" data-i18n="w.p3.eyebrow">Pillar 03 · Leadership Development</span>
+      <h2 data-i18n="w.p3.title">A leadership team that role-models the behaviours.</h2>
+      <p class="lead mt-2" data-i18n="w.p3.lead">We develop leaders who can role-model the behaviours, habits and mindset required for excellence. Programmes are tailored to each leader's strengths and context, and are reinforced through ongoing coaching so development becomes habit, not theory.</p>
       <ul class="tick-list mt-3">
-        <li>Build leaders who can coach, challenge and inspire their teams to perform</li>
-        <li>Development tailored to each leader's strengths, gaps and operating context</li>
-        <li>Translate vision into the day-to-day actions teams can follow</li>
-        <li>Your values and vision built into the programme from front line to executives</li>
+        <li data-i18n="w.p3.li1">Build leaders who can coach, challenge and inspire their teams to perform</li>
+        <li data-i18n="w.p3.li2">Development tailored to each leader's strengths, gaps and operating context</li>
+        <li data-i18n="w.p3.li3">Translate vision into the day-to-day actions teams can follow</li>
+        <li data-i18n="w.p3.li4">Your values and vision built into the programme from front line to executives</li>
       </ul>
-      <p class="mt-3" style="color: var(--green); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .85rem;">Outcome — a capable leadership team that role-models the behaviours</p>
+      <p class="mt-3" style="color: var(--green); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .85rem;" data-i18n="w.p3.outcome">Outcome — a capable leadership team that role-models the behaviours</p>
     </div>
     <div class="illustration">
       <!-- Leader silhouette with team underneath — Leadership Development -->
@@ -211,10 +224,10 @@
 <!-- ============ CTA ============ -->
 <section class="cta-band">
   <div class="container">
-    <span class="eyebrow">Ready when you are</span>
-    <h2>One conversation. Real clarity on your route to excellence.</h2>
-    <p>Tell us where you are and where you want to be. We'll tell you whether we can help — and if we can't, we'll point you to who can.</p>
-    <a href="contact.html" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
+    <span class="eyebrow" data-i18n="w.cta.eyebrow">Ready when you are</span>
+    <h2 data-i18n="w.cta.title">One conversation. Real clarity on your route to excellence.</h2>
+    <p data-i18n="w.cta.sub">Tell us where you are and where you want to be. We'll tell you whether we can help — and if we can't, we'll point you to who can.</p>
+    <a href="contact.html" class="btn btn-primary" data-i18n="nav.contact">Get in touch <span class="arrow">→</span></a>
   </div>
 </section>
 
@@ -225,30 +238,31 @@
         <div class="brand">
           <img class="brand-logo" src="assets/logo-light.svg" alt="Inspire Lead Change">
         </div>
-        <p class="tag">Coaching-led operational excellence and leadership development for organisations that demand more.</p>
+        <p class="tag" data-i18n="footer.tagline">Coaching-led operational excellence and leadership development for organisations that demand more.</p>
       </div>
       <div>
-        <h4>Pages</h4>
-        <a href="index.html">Home</a>
-        <a href="what-we-do.html">What we do</a>
-        <a href="our-approach.html">Our approach</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <h4 data-i18n="footer.pages">Pages</h4>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="what-we-do.html" data-i18n="nav.what">What we do</a>
+        <a href="our-approach.html" data-i18n="nav.approach">Our approach</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+        <a href="contact.html" data-i18n="footer.contactlink">Contact</a>
       </div>
       <div>
-        <h4>Get in touch</h4>
+        <h4 data-i18n="footer.get">Get in touch</h4>
         <a href="mailto:info@inspireleadchange.com">info@inspireleadchange.com</a>
-        <a href="contact.html">Book a discovery call</a>
-        <p class="tag" style="margin-top: 14px;">Based in Haarlem, Netherlands · Working with clients worldwide.</p>
+        <a href="contact.html" data-i18n="footer.book">Book a discovery call</a>
+        <p class="tag" style="margin-top: 14px;" data-i18n="footer.based">Based in Haarlem, Netherlands · Working with clients worldwide.</p>
       </div>
     </div>
     <div class="legal">
-      <span>© <span id="year"></span> Inspire Lead Change. All rights reserved.</span>
-      <span>ILC · Haarlem, Netherlands</span>
+      <span data-i18n="footer.rights">© <span id="year"></span> Inspire Lead Change. All rights reserved.</span>
+      <span data-i18n="footer.loc">ILC · Haarlem, Netherlands</span>
     </div>
   </div>
 </footer>
 
+<script src="translations.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
