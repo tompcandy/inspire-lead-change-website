@@ -10,6 +10,14 @@
   var LANGS = ['en', 'nl', 'de', 'fr'];
   var currentLang = 'en';
 
+  /* Small inline SVG flags (3:2) */
+  var FLAGS = {
+    en: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4.5"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>',
+    nl: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#FFF"/><rect width="60" height="13.33" fill="#AE1C28"/><rect y="26.67" width="60" height="13.33" fill="#21468B"/></svg>',
+    de: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="13.33" fill="#000"/><rect y="13.33" width="60" height="13.33" fill="#DD0000"/><rect y="26.67" width="60" height="13.33" fill="#FFCE00"/></svg>',
+    fr: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#FFF"/><rect width="20" height="40" fill="#002395"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>'
+  };
+
   function t(key, lang) {
     return (I18N[lang] && I18N[lang][key]) ||
            (I18N.en && I18N.en[key]) || null;
@@ -73,12 +81,23 @@
     document.querySelectorAll('.lang-btn .code').forEach(function (el) {
       el.textContent = lang.toUpperCase();
     });
+    document.querySelectorAll('.lang-btn .flag').forEach(function (el) {
+      el.innerHTML = FLAGS[lang] || '';
+    });
     document.querySelectorAll('.lang-menu button').forEach(function (b) {
       b.setAttribute('aria-current', b.getAttribute('data-lang') === lang ? 'true' : 'false');
     });
 
     try { localStorage.setItem('ilc-lang', lang); } catch (e) { /* ignore */ }
   }
+
+  /* Add flags to the dropdown options */
+  document.querySelectorAll('.lang-menu button').forEach(function (b) {
+    var flag = FLAGS[b.getAttribute('data-lang')];
+    if (flag && !b.querySelector('.flag')) {
+      b.innerHTML = '<span class="flag" aria-hidden="true">' + flag + '</span><span>' + b.textContent + '</span>';
+    }
+  });
 
   /* Switcher open/close + selection */
   document.querySelectorAll('.lang-switch').forEach(function (sw) {
