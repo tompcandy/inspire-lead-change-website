@@ -3,6 +3,109 @@
 (function () {
   'use strict';
 
+  /* ==========================================================
+     i18n — language switching (EN / NL / DE / FR)
+     ========================================================== */
+  var I18N  = window.ILC_TRANSLATIONS || {};
+  var LANGS = ['en', 'nl', 'de', 'fr'];
+  var currentLang = 'en';
+
+  function t(key, lang) {
+    return (I18N[lang] && I18N[lang][key]) ||
+           (I18N.en && I18N.en[key]) || null;
+  }
+
+  function detectLang() {
+    try {
+      var saved = localStorage.getItem('ilc-lang');
+      if (saved && LANGS.indexOf(saved) !== -1) return saved;
+    } catch (e) { /* storage unavailable */ }
+    var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    return LANGS.indexOf(nav) !== -1 ? nav : 'en';
+  }
+
+  function applyLang(lang) {
+    if (!I18N[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    /* Text / HTML content */
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var val = t(el.getAttribute('data-i18n'), lang);
+      if (val == null) return;
+
+      if (el.namespaceURI === 'http://www.w3.org/2000/svg') {
+        /* SVG labels: plain text + squeeze longer words into their block */
+        el.textContent = val;
+        var fit = el.getAttribute('data-i18n-fit');
+        if (fit && val.length > 7) {
+          el.setAttribute('textLength', fit);
+          el.setAttribute('lengthAdjust', 'spacingAndGlyphs');
+        } else {
+          el.removeAttribute('textLength');
+          el.removeAttribute('lengthAdjust');
+        }
+      } else if (el.tagName === 'TITLE') {
+        el.textContent = val;
+      } else {
+        el.innerHTML = val;
+      }
+    });
+
+    /* Attributes */
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n-placeholder'), lang);
+      if (v) el.setAttribute('placeholder', v);
+    });
+    document.querySelectorAll('[data-i18n-content]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n-content'), lang);
+      if (v) el.setAttribute('content', v);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n-aria'), lang);
+      if (v) el.setAttribute('aria-label', v);
+    });
+
+    /* Footer year lives inside a translated string — re-fill it */
+    fillYear();
+
+    /* Update switcher UI */
+    document.querySelectorAll('.lang-btn .code').forEach(function (el) {
+      el.textContent = lang.toUpperCase();
+    });
+    document.querySelectorAll('.lang-menu button').forEach(function (b) {
+      b.setAttribute('aria-current', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+
+    try { localStorage.setItem('ilc-lang', lang); } catch (e) { /* ignore */ }
+  }
+
+  /* Switcher open/close + selection */
+  document.querySelectorAll('.lang-switch').forEach(function (sw) {
+    var btn = sw.querySelector('.lang-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = sw.dataset.open === 'true';
+      sw.dataset.open = String(!open);
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    sw.querySelectorAll('.lang-menu button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        applyLang(b.getAttribute('data-lang'));
+        sw.dataset.open = 'false';
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.lang-switch[data-open="true"]').forEach(function (sw) {
+      sw.dataset.open = 'false';
+      var btn = sw.querySelector('.lang-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   /* --- Mobile nav toggle --- */
   const toggle = document.querySelector('.nav-toggle');
   const links  = document.querySelector('.nav-links');
@@ -24,8 +127,14 @@
   }
 
   /* --- Footer year --- */
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  function fillYear() {
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  }
+  fillYear();
+
+  /* Apply the saved / detected language on load */
+  applyLang(detectLang());
 
   /* --- Contact form: opens user's mail client with pre-filled message --- */
   const form    = document.getElementById('contact-form');
@@ -43,7 +152,7 @@
 
       // Basic validation
       if (!name || !email || !message) {
-        alert('Please fill in your name, email, and a short message.');
+        alert(t('c.form.alert', currentLang) || 'Please fill in your name, email, and a short message.');
         return;
       }
 
