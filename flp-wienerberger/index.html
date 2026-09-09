@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#183D65">
-<title>Front-Line Leadership Programme — Voorbereiding | Inspire Lead Change</title>
+<title data-i18n="title">Front-Line Leadership Programme — Pre-work | Inspire Lead Change</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -18,13 +18,27 @@
   body{font-family:'Josefin Sans',sans-serif;color:var(--navy);background:#fff;line-height:1.65;font-size:17px}
   .wrap{max-width:880px;margin:0 auto;padding:0 24px}
 
-  header{background:var(--navy);color:#fff;padding:64px 0 56px}
+  header{background:var(--navy);color:#fff;padding:64px 0 56px;position:relative}
   header img.logo{width:120px;display:block;margin-bottom:36px}
   .kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--steel);font-weight:600;margin-bottom:14px}
   header h1{font-size:clamp(30px,5vw,44px);font-weight:700;line-height:1.15;margin-bottom:16px}
   header p.sub{color:var(--light);max-width:620px;font-size:18px}
   .chips{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
   .chip{background:var(--green);color:#fff;font-weight:600;font-size:13px;letter-spacing:1px;padding:9px 16px 7px;border-radius:999px}
+
+  /* Language switcher */
+  .lang-switch{position:absolute;top:24px;right:24px;z-index:20}
+  .lang-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px 6px;font:inherit;font-weight:600;font-size:13px;letter-spacing:1px;cursor:pointer;transition:border-color .2s}
+  .lang-btn:hover{border-color:#fff}
+  .lang-switch .flag{display:inline-flex;width:20px;height:14px;border-radius:2.5px;overflow:hidden;flex-shrink:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+  .lang-switch .flag svg{width:100%;height:100%;display:block}
+  .lang-btn .caret{font-size:9px;opacity:.8}
+  .lang-menu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border-radius:10px;box-shadow:0 8px 30px rgba(24,61,101,.3);padding:6px;min-width:170px;display:none}
+  .lang-switch[data-open="true"] .lang-menu{display:block}
+  .lang-menu button{display:flex;width:100%;align-items:center;gap:10px;padding:9px 12px 7px;border:0;background:none;border-radius:7px;font:inherit;font-size:14.5px;color:var(--navy);cursor:pointer;text-align:left}
+  .lang-menu button:hover{background:var(--mist)}
+  .lang-menu button[aria-current="true"]{color:var(--green2);font-weight:700}
+  .lang-menu button[aria-current="true"]::after{content:'✓';margin-left:auto;color:var(--green)}
 
   .bar{background:var(--mist);padding:18px 0}
   .bar .wrap{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14px;color:var(--mute)}
@@ -40,9 +54,8 @@
 
   .values{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin:26px 0 30px}
   .vcard{background:var(--mist);border-radius:12px;padding:26px 26px 18px}
-  .vcard h4{color:var(--green2);letter-spacing:2px;font-size:15px;margin-bottom:10px;text-transform:uppercase}
-  .vcard p{font-size:15px;margin-bottom:12px}
-  .vcard .see{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green2);font-weight:600;margin-bottom:6px}
+  .vcard h4{color:var(--green2);letter-spacing:2px;font-size:15px;margin-bottom:10px}
+  .vcard p{font-size:15.5px;margin-bottom:10px}
   .vcard ul{list-style:none;margin:0 0 8px}
   .vcard li{font-size:15px;color:var(--mute);padding-left:18px;position:relative;margin-bottom:8px}
   .vcard li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--green)}
@@ -54,7 +67,7 @@
   summary .val{margin-left:auto;font-size:12px;letter-spacing:1.5px;color:var(--green2);font-weight:600;text-transform:uppercase;white-space:nowrap}
   details .body{padding:0 22px 18px 72px}
   details .body p{font-size:15.5px;margin-bottom:10px}
-  details .body .q{background:#fff;border-radius:8px;padding:12px 16px 8px;font-size:15px;color:var(--navy);font-style:italic}
+  details .body .q{border-left:none;background:#fff;border-radius:8px;padding:12px 16px 8px;font-size:15px;color:var(--navy);font-style:italic}
   @media(max-width:600px){details .body{padding-left:22px}}
 
   .quote{background:var(--navy);color:#fff;border-radius:12px;padding:30px 32px 22px;margin:28px 0;max-width:760px}
@@ -82,258 +95,351 @@
 <body>
 
 <header>
+  <div class="lang-switch">
+    <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+      <span class="flag" aria-hidden="true"></span>
+      <span class="code">EN</span>
+      <span class="caret">▾</span>
+    </button>
+    <div class="lang-menu" role="menu">
+      <button type="button" data-lang="en" aria-current="true">English</button>
+      <button type="button" data-lang="nl">Nederlands</button>
+      <button type="button" data-lang="de">Deutsch</button>
+      <button type="button" data-lang="pl">Polski</button>
+      <button type="button" data-lang="fr">Français</button>
+    </div>
+  </div>
   <div class="wrap">
     <img class="logo" src="assets/ilc_logo_reverse.png" alt="iLC — Inspire Lead Change">
     <div class="kicker">Wienerberger &nbsp;·&nbsp; Front-Line Leadership Programme</div>
-    <h1>Jouw voorbereiding begint hier.</h1>
-    <p class="sub">Welkom bij het programma. Vóór Workshop&nbsp;1 zijn er drie korte leesteksten en één schriftelijke reflectie — samen zo'n 60 tot 90 minuten. Alles wat je nodig hebt staat op deze pagina.</p>
+    <h1 data-i18n="hdr.h1">Your pre-work starts here.</h1>
+    <p class="sub" data-i18n="hdr.sub">Welcome to the programme. Before Workshop&nbsp;1 there are three short reads and one piece of written reflection — about 60 to 90 minutes in total. Everything you need is on this page.</p>
     <div class="chips">
-      <span class="chip">3 LEESTEKSTEN</span>
-      <span class="chip">1 WERKBLAD</span>
-      <span class="chip">JE 360</span>
-      <span class="chip">60–90 MINUTEN</span>
+      <span class="chip" data-i18n="chip1">3 READS</span>
+      <span class="chip" data-i18n="chip2">1 WORKSHEET</span>
+      <span class="chip" data-i18n="chip3">YOUR 360</span>
+      <span class="chip" data-i18n="chip4">60–90 MINUTES</span>
     </div>
   </div>
 </header>
 
 <div class="bar">
   <div class="wrap">
-    <span><b>1.</b> De vier waarden</span>
-    <span><b>2.</b> De 10 principes</span>
-    <span><b>3.</b> Psychologische veiligheid</span>
-    <span><b>4.</b> Jouw schriftelijke voorbereiding</span>
+    <span data-i18n="bar1"><b>1.</b> The four values</span>
+    <span data-i18n="bar2"><b>2.</b> The 10 principles</span>
+    <span data-i18n="bar3"><b>3.</b> Psychological safety</span>
+    <span data-i18n="bar4"><b>4.</b> Your written pre-work</span>
   </div>
 </div>
 
 <section id="values">
   <div class="wrap">
-    <div class="eyebrow">Leestekst 1 · Circa 15 minuten</div>
-    <h2>De vier waarden — op jouw shift</h2>
-    <p class="lead">Waarden hangen makkelijk aan de muur en zijn moeilijk te zien op een dinsdagnachtdienst. Dit programma pakt het anders aan: elke waarde wordt zichtbaar in wat jouw team jou ziet dóén.</p>
-    <p>Lees elke waarde twee keer. Eerst zoals ze geschreven staat. Daarna nog een keer, met de vraag: <em>wanneer heeft mijn team mij dit voor het laatst zien doen?</em> Is het eerlijke antwoord "niet recent", dan heb je zojuist je startpunt gevonden — en ben je precies voor wie dit programma bedoeld is.</p>
+    <div class="eyebrow" data-i18n="v.eyebrow">Read 1 · About 15 minutes</div>
+    <h2 data-i18n="v.h2">The four values — on your shift</h2>
+    <p class="lead" data-i18n="v.lead">Values are easy to hang on a wall and hard to see on a Tuesday night shift. This programme treats them differently: every value is defined by what your team can watch you do.</p>
+    <p data-i18n="v.p">Read each value below twice. First as it's written. Then again, asking: <em>when did my team last see me do this?</em> If the honest answer is "not recently", you've just found your starting point — and you're exactly who this programme is for.</p>
 
     <div class="values">
       <div class="vcard">
-        <h4>Vertrouwen is onze basis</h4>
-        <p>Vertrouwen vormt de basis van alles wat we doen. We bouwen vertrouwen op door eerlijk, integer en transparant te handelen. Dat vertrouwen ontstaat niet vanzelf: het moet wederzijds worden verdiend en onderhouden. Een cultuur van vertrouwen zorgt ervoor dat iedereen zich veilig voelt om ideeën, vragen en zorgen te delen. Het helpt ons samen te werken, van elkaar te leren en ons verder te ontwikkelen. Zo kunnen we rekenen op elkaars steun en bouwen we samen aan een sterke organisatie.</p>
-        <div class="see">Op de vloer zie je dit als</div>
+        <h4 data-i18n="v1.h">TRUST</h4>
+        <p data-i18n="v1.p">We act with integrity — fairly, consistently, reliably. We back our people and trust their expertise.</p>
         <ul>
-          <li>Je doet wat je hebt gezegd, in de shift waarin je zei dat je het zou doen.</li>
-          <li>Als iemand een probleem meldt, zorgt jouw eerste reactie ervoor dat diegene blij is dat hij het gemeld heeft.</li>
-          <li>Je verdedigt beslissingen van je team naar boven toe wanneer ze te goeder trouw handelden.</li>
+          <li data-i18n="v1.l1">You do what you said you'd do by the shift you said you'd do it.</li>
+          <li data-i18n="v1.l2">When someone raises a problem, your first reaction makes them glad they did.</li>
+          <li data-i18n="v1.l3">You defend your team's decisions upwards when they acted in good faith.</li>
         </ul>
       </div>
       <div class="vcard">
-        <h4>Respect verbindt ons</h4>
-        <p>Bij wienerberger betekent respect dat we waardering tonen en verantwoordelijkheid nemen, voor elkaar én voor het milieu. We communiceren open en eerlijk, luisteren actief naar elkaar en proberen verschillende standpunten te begrijpen. Met empathie, aandacht en respect voor ieders bijdrage creëren we een werkomgeving waarin iedereen zich gehoord, gewaardeerd en betrokken voelt.</p>
-        <div class="see">Op de vloer zie je dit als</div>
+        <h4 data-i18n="v2.h">RESPECT</h4>
+        <p data-i18n="v2.p">We know our people and listen. We recognise effort as well as results. We stay humble, embrace differences, and model inclusion every day.</p>
         <ul>
-          <li>Je weet waar elke operator goed in is, waaraan hij werkt en één ding dat voor hem belangrijk is buiten het werk.</li>
-          <li>Je benoemt inzet hardop — niet alleen de cijfers.</li>
-          <li>Je vraagt voordat je vertelt, zeker bij mensen die de lijn langer draaien dan jij.</li>
+          <li data-i18n="v2.l1">You know what each operator is good at, what they're working on, and one thing that matters to them outside work.</li>
+          <li data-i18n="v2.l2">You notice effort out loud — not just the numbers.</li>
+          <li data-i18n="v2.l3">You ask before you tell, especially with people who've run the line longer than you.</li>
         </ul>
       </div>
       <div class="vcard">
-        <h4>Passie is onze drijfveer</h4>
-        <p>We zetten ons met passie in voor wat we doen. Die passie werkt aanstekelijk en inspireert anderen om hetzelfde engagement te tonen. Door ons enthousiasme te delen, motiveren we elkaar en halen we het beste uit onszelf, onze collega's en ons werk. Zo bereiken we samen mooie resultaten!</p>
-        <div class="see">Op de vloer zie je dit als</div>
+        <h4 data-i18n="v3.h">PASSION</h4>
+        <p data-i18n="v3.p">We make goals tangible and translate site targets into language the team owns. We celebrate success — even on the tough shifts.</p>
         <ul>
-          <li>Je team kan in eigen woorden zeggen wat het doel van deze week is en waarom het ertoe doet.</li>
-          <li>Als het team een doel haalt, gebeurt er iets zichtbaars.</li>
-          <li>Jouw energie op een slechte dag is bewust gekozen — de shift neemt over welke stemming jij meebrengt.</li>
+          <li data-i18n="v3.l1">Your team can say what this week's goal is and why it matters, in their own words.</li>
+          <li data-i18n="v3.l2">When the team hits a target, something visible happens.</li>
+          <li data-i18n="v3.l3">Your energy on a bad day is deliberate, because the shift catches whatever mood you bring.</li>
         </ul>
       </div>
       <div class="vcard">
-        <h4>Creativiteit geeft ons energie</h4>
-        <p>Creativiteit stimuleert innovatie en groei. We moedigen nieuwe ideeën aan en geven elkaar de ruimte om kansen te verkennen, anders te denken en bestaande werkwijzen uit te dagen. Door creativiteit te combineren met expertise en samenwerking, ontwikkelen we vernieuwende oplossingen die waarde creëren voor onze klanten, collega's en organisatie. We durven vooruit te kijken, initiatief te nemen en groot te denken. Zo blijven we leren, verbeteren en bouwen we samen aan de toekomst.</p>
-        <div class="see">Op de vloer zie je dit als</div>
+        <h4 data-i18n="v4.h">CREATIVITY</h4>
+        <p data-i18n="v4.p">We encourage decisiveness and dare to dream big. We create space to learn and stay curious. We say no to what isn't important.</p>
         <ul>
-          <li>Als iets misgaat, is je eerste vraag "wat is er gebeurd?" — niet "wie heeft dit gedaan?"</li>
-          <li>Je doet iets met ideeën van het team — en vertelt ze wat er met hun idee is gebeurd.</li>
-          <li>Je beschermt de focus van het team door nee te zeggen tegen wat niet belangrijk is.</li>
+          <li data-i18n="v4.l1">When something goes wrong, your first question is "what happened?", not "who did it?"</li>
+          <li data-i18n="v4.l2">You act on ideas from the team — and tell them what happened to their idea.</li>
+          <li data-i18n="v4.l3">You protect the team's focus by saying no to the things that don't matter.</li>
         </ul>
       </div>
     </div>
-    <p>Met deze waarden werk je op alle drie de workshopdagen. Dag 1 draait om <em>Vertrouwen en Respect</em>, Dag 2 om <em>Passie en Creativiteit</em>, en Dag 3 brengt alle vier samen.</p>
+    <p data-i18n="v.close">You'll work with these values on all three workshop days. Day 1 anchors on <em>Trust and Respect</em>, Day 2 on <em>Passion and Creativity</em>, and Day 3 pulls all four together.</p>
   </div>
 </section>
 
 <section id="principles">
   <div class="wrap">
-    <div class="eyebrow">Leestekst 2 · Circa 20 minuten</div>
-    <h2>De 10 gedragsprincipes, uitgelegd</h2>
-    <p class="lead">De waarden zijn het <em>waarom</em>. Deze tien principes zijn het <em>wat</em> — het zichtbare gedrag dat je 360 meet, dat de workshops oefenen en dat je 100-dagenplan gaat volgen.</p>
-    <p>Open elk principe. Je vindt telkens wat het betekent, hoe het eruitziet op de vloer, wat het níét is — en één vraag om over na te denken. Neem de tijd; dit is de ruggengraat van het hele programma.</p>
+    <div class="eyebrow" data-i18n="pr.eyebrow">Read 2 · About 20 minutes</div>
+    <h2 data-i18n="pr.h2">The 10 behavioural principles, explained</h2>
+    <p class="lead" data-i18n="pr.lead">The values are the <em>why</em>. These ten principles are the <em>what</em> — the observable behaviours your 360 measures, the workshops practise, and your 100-day plan will track.</p>
+    <p data-i18n="pr.p">Open each principle. For each one you'll find what it means, what it looks like on the floor, what it isn't — and one question to sit with. Don't rush; this is the spine of the whole programme.</p>
 
     <details>
-      <summary><span class="num">1</span>Daag elkaar respectvol uit<span class="val">Respect · Vertrouwen</span></summary>
+      <summary><span class="num">1</span><span class="ttl" data-i18n="p1.t">Respectfully challenge each other</span><span class="val" data-i18n="p1.v">Respect · Trust</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> je spreekt je uit als iets niet klopt — een norm die verslapt, een risico dat genomen wordt, een beslissing waar je het niet mee eens bent — duidelijk en zonder de relatie te beschadigen.</p>
-        <p><em>Op de vloer:</em> "Voordat we deze batch draaien — de checklijst van de nacht is niet afgetekend. Eerst dat afronden." Rustig gezegd, tegen iedereen, ongeacht rang of vriendschap.</p>
-        <p><em>Wat het niet is:</em> hard zijn, punten scoren, of het omgekeerde — zwijgen om de lieve vrede. Zwijgen is ook een keuze, en die heeft gevolgen.</p>
-        <p class="q">Wanneer zag jij voor het laatst iets dat niet klopte en zei je niets? Wat maakte zwijgen veiliger?</p>
+        <p data-i18n="p1.m"><em>What it means:</em> speaking up when something isn't right — a standard slipping, a risk being taken, a decision you disagree with — clearly and without damaging the relationship.</p>
+        <p data-i18n="p1.f"><em>On the floor:</em> "Before we run this batch — the check sheet from nights isn't signed. Let's close that first." Said calmly, to anyone, regardless of rank or friendship.</p>
+        <p data-i18n="p1.n"><em>What it isn't:</em> being harsh, scoring points, or the opposite — staying silent to keep the peace. Silence is also a choice, and it has consequences.</p>
+        <p class="q" data-i18n="p1.q">When did you last see something not right and say nothing? What made silence feel safer?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">2</span>Luister eerst om te begrijpen<span class="val">Respect</span></summary>
+      <summary><span class="num">2</span><span class="ttl" data-i18n="p2.t">Listen first to understand</span><span class="val" data-i18n="p2.v">Respect</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> luisteren om te begrijpen wat de ander werkelijk bedoelt — niet wachten tot jij aan de beurt bent, en niet meteen naar een oplossing springen.</p>
-        <p><em>Op de vloer:</em> een gesprek onder vier ogen waarin de operator meer praat dan jij. "Wat nog meer?" vragen en tot vijf tellen voordat je een stilte opvult.</p>
-        <p><em>Wat het niet is:</em> knikken terwijl je je antwoord voorbereidt. Een probleem oplossen waar niemand om vroeg. Alleen luisteren als er tijd is — die is er nooit; die maak je.</p>
-        <p class="q">Wie in je team ken je het minst goed — en hoe zou een echt gesprek met diegene eruitzien?</p>
+        <p data-i18n="p2.m"><em>What it means:</em> listening to understand what the other person actually means — not waiting for your turn to speak, and not jumping straight to a fix.</p>
+        <p data-i18n="p2.f"><em>On the floor:</em> a one-to-one where the operator talks more than you do. Asking "what else?" and counting to five before filling a silence.</p>
+        <p data-i18n="p2.n"><em>What it isn't:</em> nodding while planning your answer. Fixing a problem the person didn't ask you to fix. Listening only when there's time — there never is; you make it.</p>
+        <p class="q" data-i18n="p2.q">Who on your team do you know least well — and what would a real conversation with them look like?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">3</span>Stel duidelijke verwachtingen<span class="val">Passie · Vertrouwen</span></summary>
+      <summary><span class="num">3</span><span class="ttl" data-i18n="p3.t">Set clear expectations</span><span class="val" data-i18n="p3.v">Passion · Trust</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> mensen weten precies wat er van hen verwacht wordt — qua gedrag, prestaties en veiligheid — vóórdat ze erop worden aangesproken.</p>
-        <p><em>Op de vloer:</em> "Gangpaden vrij, gereedschap op z'n plek, checks afgetekend vóór het einde van de shift" in plaats van "houd de boel netjes". Een duidelijke verwachting beantwoordt: wat, wanneer, volgens welke norm, en hoe we het allebei weten.</p>
-        <p><em>Wat het niet is:</em> normen die alleen in jouw hoofd bestaan. Iemand afrekenen op een regel die niemand hem verteld heeft is oneerlijk — en teams voelen dat feilloos aan.</p>
-        <p class="q">Welke van jouw verwachtingen bestaat op dit moment alleen in jouw hoofd?</p>
+        <p data-i18n="p3.m"><em>What it means:</em> people know exactly what's expected — behaviour, performance and safety — before they're held to it.</p>
+        <p data-i18n="p3.f"><em>On the floor:</em> "Aisles clear, tools shadowed, checks signed by end of shift" instead of "keep the area tidy". The expectation answers: what, by when, to what standard, and how we'll both know.</p>
+        <p data-i18n="p3.n"><em>What it isn't:</em> standards that exist only in your head. Holding someone to a rule nobody told them is a fairness problem, and teams feel it.</p>
+        <p class="q" data-i18n="p3.q">Which of your expectations exists only in your head right now?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">4</span>Gebruik data en houd je aan de feiten<span class="val">Vertrouwen</span></summary>
+      <summary><span class="num">4</span><span class="ttl" data-i18n="p4.t">Use data and stick to the facts</span><span class="val" data-i18n="p4.v">Trust</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> gesprekken over prestaties, kwaliteit en problemen draaien op bewijs, niet op meningen of stemvolume.</p>
-        <p><em>Op de vloer:</em> "Drie van de vijf overdrachten deze week misten de materiaaltelling" in plaats van "de nacht laat ons altijd zitten". Heb je de data niet, dan zeg je dat — en ga je ze halen.</p>
-        <p><em>Wat het niet is:</em> data als wapen gebruiken om gelijk te krijgen. Feiten zijn er om problemen samen te begrijpen, niet om mensen mee om de oren te slaan.</p>
-        <p class="q">Tot welke data heb jij al toegang die je nooit gebruikt in teamgesprekken?</p>
+        <p data-i18n="p4.m"><em>What it means:</em> conversations about performance, quality and problems run on evidence, not opinion or volume.</p>
+        <p data-i18n="p4.f"><em>On the floor:</em> "Three of five handovers this week missed the material count" instead of "nights always leave us short". When you don't have the data, you say so — and go and get it.</p>
+        <p data-i18n="p4.n"><em>What it isn't:</em> using data as a weapon to win arguments. Facts are for understanding problems together, not for beating people with charts.</p>
+        <p class="q" data-i18n="p4.q">What data do you already have access to that you never use in team conversations?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">5</span>Richt je op het proces, niet op de persoon<span class="val">Respect · Vertrouwen</span></summary>
+      <summary><span class="num">5</span><span class="ttl" data-i18n="p5.t">Focus on the process, not the person</span><span class="val" data-i18n="p5.v">Respect · Trust</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> als iets misgaat, is de eerste vraag "waar liet het proces ons in de steek?" — niet "wiens schuld is dit?"</p>
-        <p><em>Op de vloer:</em> "De momentcontrole is bij drie stuks overgeslagen — laten we uitzoeken hoe dat kon" in plaats van "je bent slordig". De melder van een bijna-ongeval bedanken, elke keer weer.</p>
-        <p><em>Wat het niet is:</em> dat niemand ooit verantwoordelijk is. Het is precies andersom: verantwoordelijkheid groeit als schuld krimpt, omdat problemen boven tafel komen zolang ze nog klein zijn.</p>
-        <p class="q">Denk aan het laatste schuldmoment op jouw shift. Wat leerde het mensen over het melden van het volgende probleem?</p>
+        <p data-i18n="p5.m"><em>What it means:</em> when something goes wrong, the first question is "where did the process let us down?" — not "whose fault is this?"</p>
+        <p data-i18n="p5.f"><em>On the floor:</em> "The torque check was missed on three units — let's find out how" instead of "you're careless". Thanking the person who reports a near-miss, every time.</p>
+        <p data-i18n="p5.n"><em>What it isn't:</em> nobody ever being accountable. It's the opposite: accountability goes up when blame goes down, because problems surface while they're still small.</p>
+        <p class="q" data-i18n="p5.q">Think of the last blame moment on your shift. What did it teach people about reporting the next problem?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">6</span>Borg kwaliteit bij de bron<span class="val">Passie</span></summary>
+      <summary><span class="num">6</span><span class="ttl" data-i18n="p6.t">Ensure quality at source</span><span class="val" data-i18n="p6.v">Passion</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> kwaliteit wordt op elk station ingebouwd, niet aan het einde erin gecontroleerd. De norm is eigendom van de plek waar het werk gebeurt.</p>
-        <p><em>Op de vloer:</em> de lijn stoppen als iets op het randje zit — en achter degene staan die stopt, ook als die het achteraf mis had.</p>
-        <p><em>Wat het niet is:</em> "kwaliteit is van de kwaliteitsafdeling", of een twijfelbatch doorschuiven omdat het shiftdoel binnen bereik is.</p>
-        <p class="q">Wat kost het iemand op jouw shift op dit moment om de lijn te stoppen? Wat zou de juiste keuze goedkoper maken?</p>
+        <p data-i18n="p6.m"><em>What it means:</em> quality is built in at every station, not inspected in at the end. The standard is owned where the work happens.</p>
+        <p data-i18n="p6.f"><em>On the floor:</em> stopping the line when something's on the edge — and backing the person who stops it, even if they turn out to be wrong.</p>
+        <p data-i18n="p6.n"><em>What it isn't:</em> "quality is the quality department's job", or passing a borderline batch downstream because the shift target is close.</p>
+        <p class="q" data-i18n="p6.q">What does it currently cost someone on your shift to stop the line? What would make the right call cheaper?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">7</span>Wees voorbereid en kijk vooruit<span class="val">Creativiteit · Passie</span></summary>
+      <summary><span class="num">7</span><span class="ttl" data-i18n="p7.t">Be prepared and look ahead</span><span class="val" data-i18n="p7.v">Creativity · Passion</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> problemen zien aankomen in plaats van ze ontdekken. Brandjes blussen oogt heldhaftig; voorbereiding oogt saai en wint.</p>
-        <p><em>Op de vloer:</em> tien minuten vóór de shift langs vier vragen — mensen, materialen, machines, risico's. Een blokkade wegnemen voordat het team erop stuit. Nee zeggen tegen een afleiding zodat het team kan focussen.</p>
-        <p><em>Wat het niet is:</em> doen alsof alles voorspelbaar is. Het gaat om het opvangen van de rook — want bijna elke brand had er.</p>
-        <p class="q">Denk aan je laatste brandje. Wat was het vroegste moment waarop iemand het had kunnen zien aankomen?</p>
+        <p data-i18n="p7.m"><em>What it means:</em> anticipating problems instead of discovering them. Firefighting looks heroic; preparation looks boring and wins.</p>
+        <p data-i18n="p7.f"><em>On the floor:</em> ten minutes before the shift on four questions — people, materials, machines, risks. Removing a blocker before the team hits it. Saying no to a distraction so the team can focus.</p>
+        <p data-i18n="p7.n"><em>What it isn't:</em> pretending everything is predictable. It's about catching the smoke, because almost every fire had some.</p>
+        <p class="q" data-i18n="p7.q">Think of your last firefight. When was the earliest moment someone could have seen it coming?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">8</span>Geef gestructureerde feedback<span class="val">Vertrouwen · Respect</span></summary>
+      <summary><span class="num">8</span><span class="ttl" data-i18n="p8.t">Provide structured feedback for improvement</span><span class="val" data-i18n="p8.v">Trust · Respect</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> feedback die specifiek is, recent, over gedrag gaat en als gesprek wordt gevoerd — corrigerend én positief.</p>
-        <p><em>Op de vloer:</em> "In de overdracht van vanochtend is het storingspunt van de nacht niet genoemd, waardoor de dagploeg een uur kwijt was. Wat is er gebeurd?" — situatie, gedrag, effect, en dan een vraag.</p>
-        <p><em>Wat het niet is:</em> vage complimenten ("goed bezig"), opgespaarde kritiek die één keer per jaar losbarst, of de feedbacksandwich — het brood verstopt het beleg.</p>
-        <p class="q">Hoeveel specifieke positieve feedback kregen jouw mensen vorige week van jou — en zouden zij dat beamen?</p>
+        <p data-i18n="p8.m"><em>What it means:</em> feedback that is specific, recent, about behaviour, and delivered as a conversation — both corrective and positive.</p>
+        <p data-i18n="p8.f"><em>On the floor:</em> "In this morning's handover, the downtime issue from nights wasn't mentioned, so the day crew lost an hour. What happened?" — situation, behaviour, impact, then a question.</p>
+        <p data-i18n="p8.n"><em>What it isn't:</em> vague praise ("good job"), stored-up criticism delivered once a year, or the feedback sandwich — the bread hides the filling.</p>
+        <p class="q" data-i18n="p8.q">How much specific positive feedback did your people get from you last week — and would they agree?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">9</span>Begrijp het doel<span class="val">Passie</span></summary>
+      <summary><span class="num">9</span><span class="ttl" data-i18n="p9.t">Understand the goal</span><span class="val" data-i18n="p9.v">Passion</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> iedereen op de shift weet wat het doel is, waarom het ertoe doet en wat zijn aandeel erin is — in eigen woorden, niet in managementtaal.</p>
-        <p><em>Op de vloer:</em> "Snelle, schone omstellingen — zo winnen we deze week" in plaats van "de OEE moet naar 82%". Successen worden gevierd zodat mensen ze voelen.</p>
-        <p><em>Wat het niet is:</em> cijfers voorlezen van een bord. Een doel dat je team niet kan navertellen, is een doel dat je team niet kan halen.</p>
-        <p class="q">Als je een van je operators zou vragen wat het doel van deze week is en waarom het ertoe doet — wat zou hij eerlijk gezegd antwoorden?</p>
+        <p data-i18n="p9.m"><em>What it means:</em> everyone on the shift knows what the goal is, why it matters, and their part in it — in their own words, not management language.</p>
+        <p data-i18n="p9.f"><em>On the floor:</em> "Fast, clean changeovers are how we win this week" instead of "OEE must reach 82%". Wins are celebrated so people feel them.</p>
+        <p data-i18n="p9.n"><em>What it isn't:</em> reading numbers off a board. A goal your team can't repeat is a goal your team can't hit.</p>
+        <p class="q" data-i18n="p9.q">If you asked one of your operators what this week's target is and why it matters — what would they honestly say?</p>
       </div>
     </details>
 
     <details>
-      <summary><span class="num">10</span>Creëer wat de klant waardeert<span class="val">Creativiteit · Passie</span></summary>
+      <summary><span class="num">10</span><span class="ttl" data-i18n="p10.t">Create what the customer values</span><span class="val" data-i18n="p10.v">Creativity · Passion</span></summary>
       <div class="body">
-        <p><em>Wat het betekent:</em> dagelijkse beslissingen aan de lijn verbinden met de echte mens die het werk ontvangt — de bouwer, de bouwplaats, het gezin waarvan het de muur of het dak wordt.</p>
-        <p><em>Op de vloer:</em> "Is dit goed genoeg?" wordt een andere vraag als je weet wie deze stenen donderdag metselt.</p>
-        <p><em>Wat het niet is:</em> "de klant" als abstract woord in een presentatie. Klanten zijn concreet, en jouw team verdient het om het einde van de keten te zien.</p>
-        <p class="q">Wie gebruikt er eigenlijk wat jouw shift gisteren heeft gemaakt? Zou je ze kunnen noemen?</p>
+        <p data-i18n="p10.m"><em>What it means:</em> connecting daily decisions on the line to the real person who receives the work — the builder, the site, the family whose wall or roof it becomes.</p>
+        <p data-i18n="p10.f"><em>On the floor:</em> "Is this good enough?" becomes a different question when you know who's laying these bricks on Thursday.</p>
+        <p data-i18n="p10.n"><em>What it isn't:</em> "the customer" as an abstract word in a presentation. Customers are specific, and your team deserves to see the end of the chain.</p>
+        <p class="q" data-i18n="p10.q">Who actually uses what your shift made yesterday? Could you name them?</p>
       </div>
     </details>
 
-    <p style="margin-top:22px">Je 360-rapport — dat je opent aan het begin van Workshop&nbsp;1 — beoordeelt je op precies deze tien gedragingen, gezien door je leidinggevende, je collega's en je team. De principes die je zojuist hebt gelezen zijn de taal van je hele programma.</p>
+    <p style="margin-top:22px" data-i18n="pr.close">Your 360 report — which you'll open at the start of Workshop&nbsp;1 — rates you on exactly these ten behaviours, as seen by your manager, your peers and your team. The principles you've just read are the language of your whole programme.</p>
   </div>
 </section>
 
 <section id="safety">
   <div class="wrap">
-    <div class="eyebrow">Leestekst 3 · Circa 15 minuten</div>
-    <h2>Psychologische veiligheid op de werkvloer</h2>
-    <p class="lead">Waarom blijven mensen op slecht nieuws zitten? Niet omdat het ze niet interesseert. Maar vanwege wat er gebeurde met de vorige die zijn mond opendeed.</p>
+    <div class="eyebrow" data-i18n="s.eyebrow">Read 3 · About 15 minutes</div>
+    <h2 data-i18n="s.h2">Psychological safety on the shopfloor</h2>
+    <p class="lead" data-i18n="s.lead">Why do people sit on bad news? Not because they don't care. Because of what happened to the last person who spoke up.</p>
 
-    <p>Eind jaren negentig wilde Harvard-onderzoeker Amy Edmondson bewijzen dat de beste ziekenhuisteams de minste medicatiefouten maakten. De data zeiden het tegenovergestelde: de beste teams leken juist <em>meer</em> fouten te maken. Het duurde maanden voordat ze zag waarom. De beste teams maakten niet meer fouten — ze <em>meldden</em> er meer, omdat dat veilig was. De zwakkere teams verstopten de hunne.</p>
-    <p>Ze noemde dit <em>psychologische veiligheid</em>: de gedeelde overtuiging dat je niet wordt gestraft of vernederd als je je uitspreekt met vragen, zorgen, fouten of ideeën. Dertig jaar onderzoek sindsdien — in ziekenhuizen, cockpits, fabrieken en mijnen — wijst dezelfde kant op: teams waar het veilig is om je uit te spreken hebben minder ongevallen, vangen kwaliteitsproblemen eerder af en verbeteren sneller. Niet omdat ze softer zijn. Maar omdat ze hun problemen eerder zien.</p>
+    <p data-i18n="s.p1">In the late 1990s, Harvard researcher Amy Edmondson set out to prove that the best hospital teams made the fewest medication errors. The data said the opposite: the best teams appeared to make <em>more</em> errors. It took her months to see why. The best teams weren't making more mistakes — they were <em>reporting</em> more, because it was safe to. The weaker teams were hiding theirs.</p>
+    <p data-i18n="s.p2">She called this <em>psychological safety</em>: the shared belief that you won't be punished or humiliated for speaking up with questions, concerns, mistakes or ideas. Thirty years of research since — in hospitals, aircraft crews, factories and mines — points the same way: teams that feel safe to speak up have fewer accidents, catch quality problems earlier, and improve faster. Not because they're softer. Because they see their problems sooner.</p>
 
-    <h3>Hoe dit eruitziet op een shift</h3>
-    <p>Psychologische veiligheid is geen beleefdheid, en de lat gaat er niet van omlaag. Een shift kan direct, veeleisend én volkomen veilig zijn — precies die combinatie zoekt dit programma. De test is simpel: <em>wat gebeurt er met degene die slecht nieuws brengt?</em></p>
-    <p>Een operator ziet een lager warmlopen. Melden betekent papierwerk, misschien te horen krijgen dat hij overdrijft, misschien een sneer van een collega over het ophouden van de lijn. Niets zeggen kost hem niets — vannacht. Vermenigvuldig die stille rekensom over elke operator, elke shift, elke week, en je hebt de echte reden waarom problemen "uit het niets" komen. Dat doen ze nooit. Iemand zag altijd de rook.</p>
+    <h3 data-i18n="s.h3a">What this looks like on a shift</h3>
+    <p data-i18n="s.p3">Psychological safety is not politeness, and it is not lowering the bar. A shift can be direct, demanding and completely safe — that's the combination this programme is after. The test is simple: <em>what happens to the person who brings bad news?</em></p>
+    <p data-i18n="s.p4">An operator notices a bearing running hot. Reporting it means paperwork, maybe being told they're overreacting, maybe a dig from a colleague about slowing the line. Saying nothing costs them nothing — tonight. Multiply that quiet calculation across every operator, every shift, every week, and you have the real reason problems "come out of nowhere". They never do. Somebody always saw the smoke.</p>
 
     <div class="quote">
-      <p>"De norm waar je langsloopt is de norm die je accepteert — en de stilte die je creëert is de stilte die je krijgt."</p>
-      <div class="who">Het thema van Workshop 1</div>
+      <p data-i18n="s.quote">"The standard you walk past is the standard you accept — and the silence you create is the silence you'll get."</p>
+      <div class="who" data-i18n="s.who">The theme of Workshop 1</div>
     </div>
 
-    <h3>De leidinggevende is de thermostaat</h3>
-    <p>En nu het ongemakkelijke deel: op een shift wordt psychologische veiligheid vrijwel volledig bepaald door de leidinggevende — één reactie per keer. Als iemand een bijna-ongeval meldt en jouw eerste reactie is irritatie, dan stelt het hele team zich opnieuw af. Als iemand te goeder trouw de lijn stopt en een bedankje krijgt — ook al had hij het mis — dan stelt het hele team zich de andere kant op af.</p>
-    <p>Drie gedragingen bouwen het op, en alle drie oefen je ze op Dag&nbsp;1:</p>
-    <p><em>Reageer goed op slecht nieuws.</em> Eerste reactie: "goed dat je het zegt". Oordelen komt later. Jouw eerste tien seconden bepalen of je het volgende bericht nog te horen krijgt.</p>
-    <p><em>Wijt het aan het proces, niet aan de persoon</em> (Principe&nbsp;5). "Wat is er gebeurd?" opent deuren die "wie heeft dit gedaan?" voorgoed sluit.</p>
-    <p><em>Geef je eigen fouten hardop toe.</em> Niets maakt feilbaar zijn veiliger dan een leidinggevende die het zichtbaar is. "Ik heb dat gisteren verkeerd ingeschat — dit ga ik anders doen" kost je niets en levert je de waarheid op.</p>
+    <h3 data-i18n="s.h3b">The leader is the thermostat</h3>
+    <p data-i18n="s.p5">Here is the uncomfortable part: on a shift, psychological safety is set almost entirely by the leader — one reaction at a time. When someone raises a near-miss and your first response is irritation, the whole team recalibrates. When someone stops the line in good faith and gets thanked — even if they were wrong — the whole team recalibrates the other way.</p>
+    <p data-i18n="s.p6">Three behaviours build it, and you'll practise all three on Day&nbsp;1:</p>
+    <p data-i18n="s.b1"><em>React well to bad news.</em> First response: "thank you for telling me". Evaluate later. Your first ten seconds decide whether you hear the next one.</p>
+    <p data-i18n="s.b2"><em>Blame the process, not the person</em> (Principle&nbsp;5). "What happened?" opens doors that "who did this?" closes permanently.</p>
+    <p data-i18n="s.b3"><em>Admit your own mistakes out loud.</em> Nothing makes it safer to be fallible than a leader who visibly is. "I called that wrong yesterday — here's what I'm changing" costs you nothing and buys you the truth.</p>
 
-    <h3>Vóór Workshop 1</h3>
-    <p>Kijk één week met deze bril naar je eigen shift. Zoek één moment waarop iemand zich uitsprak — wat maakte dat mogelijk? En één moment waarop iemand het waarschijnlijk níét deed — wat maakte zwijgen de veiligere keuze? Neem beide observaties mee. We gaan ermee aan de slag.</p>
+    <h3 data-i18n="s.h3c">Before Workshop 1</h3>
+    <p data-i18n="s.p7">Watch your own shift for one week with this lens. Notice one moment where someone spoke up — what made it possible? And notice one moment where someone probably didn't — what made silence the safer bet? Bring both observations with you. We'll use them.</p>
   </div>
 </section>
 
 <section id="prework">
   <div class="wrap">
-    <div class="eyebrow">Schriftelijke voorbereiding · Circa 20 minuten</div>
-    <h2>Jouw werkblad en je 360</h2>
-    <p class="lead">Twee dingen om af te ronden vóór Workshop 1. Beide gaan met je mee op de dag zelf.</p>
+    <div class="eyebrow" data-i18n="w.eyebrow">Written pre-work · About 20 minutes</div>
+    <h2 data-i18n="w.h2">Your worksheet and your 360</h2>
+    <p class="lead" data-i18n="w.lead">Two things to complete before Workshop 1. Both come with you on the day.</p>
 
     <div class="cta">
       <div>
-        <h3>Het voorbereidingswerkblad</h3>
-        <p>Eén pagina "Waarom ik leid"-reflectie, plus drie echte werksituaties die je wilt uitwerken — elk gekoppeld aan het principe dat er volgens jou het meest speelt. Dit is het ruwe materiaal voor je oefensessies op Dag&nbsp;1.</p>
+        <h3 data-i18n="w.cta.h3">The pre-work worksheet</h3>
+        <p data-i18n="w.cta.p">One page of "Why I lead" reflection, plus three real workplace situations you want to work through — each tagged to the principle you think is most at play. This is the raw material for your practice sessions on Day&nbsp;1.</p>
       </div>
-      <a class="btn" href="downloads/FLP_Voorbereiding_Werkbladen.pdf" download>Download het werkblad (PDF)</a>
+      <a class="btn" href="downloads/FLP_Prework_Worksheets.pdf" download data-i18n="w.btn">Download the worksheet (PDF)</a>
     </div>
 
     <div class="check">
-      <h3>Jouw voorbereidingschecklist</h3>
+      <h3 data-i18n="w.chk.h3">Your pre-work checklist</h3>
       <ol>
-        <li><b>Rond je 360 af.</b> Je ontvangt de link per e-mail — het invullen kost je beoordelaars zo'n 15 minuten, dus nodig ze vroeg uit. Je vertrouwelijke rapport blijft gesloten tot Workshop&nbsp;1.</li>
-        <li><b>Lees de drie teksten op deze pagina.</b> De waarden, de 10 principes, psychologische veiligheid. Samen 50–60 minuten.</li>
-        <li><b>Vul het werkblad in.</b> "Waarom ik leid" plus je drie situaties, gekoppeld aan principes. Printen of schrijven — allebei prima, zolang het maar meekomt.</li>
-        <li><b>Kijk één week naar je shift</b> door de bril van psychologische veiligheid: één uitspreek-moment, één zwijg-moment.</li>
+        <li data-i18n="w.chk1"><b>Complete your 360.</b> You'll receive the link by email — it takes your raters about 15 minutes, so nominate them early. Your confidential report is sealed until Workshop&nbsp;1.</li>
+        <li data-i18n="w.chk2"><b>Read the three pieces on this page.</b> Values, the 10 principles, psychological safety. 50–60 minutes all together.</li>
+        <li data-i18n="w.chk3"><b>Fill in the worksheet.</b> "Why I lead" plus your three situations, tagged to principles. Print it or write it — either is fine, as long as it comes with you.</li>
+        <li data-i18n="w.chk4"><b>Watch your shift for one week</b> with the psychological-safety lens: one speaking-up moment, one silence moment.</li>
       </ol>
     </div>
 
-    <p>Vragen vóór de eerste workshop? Neem contact op met je programmabegeleider of mail <a href="mailto:info@inspireleadchange.com" style="color:var(--green2);font-weight:600">info@inspireleadchange.com</a>.</p>
+    <p data-i18n="w.q">Questions before the first workshop? Contact your programme lead or email <a href="mailto:info@inspireleadchange.com" style="color:var(--green2);font-weight:600">info@inspireleadchange.com</a>.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <img src="assets/ilc_logo_reverse.png" alt="iLC">
-    <div>Front-Line Leadership Programme · voor Wienerberger verzorgd door iLC · Inspire Lead Change</div>
-    <div style="margin-top:6px"><a href="https://www.inspireleadchange.com">inspireleadchange.com</a> · Haarlem, Nederland</div>
+    <div data-i18n="f.line">Front-Line Leadership Programme · prepared for Wienerberger by iLC · Inspire Lead Change</div>
+    <div style="margin-top:6px"><a href="https://www.inspireleadchange.com">inspireleadchange.com</a> · Haarlem, Netherlands</div>
   </div>
 </footer>
 
+<script src="i18n.js?v=1"></script>
+<script>
+(function () {
+  'use strict';
+  var T = window.FLP_T || {};
+  var LANGS = ['en', 'nl', 'de', 'pl', 'fr'];
+
+  /* Inline SVG flags (3:2) */
+  var FLAGS = {
+    en: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4.5"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>',
+    nl: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#FFF"/><rect width="60" height="13.33" fill="#AE1C28"/><rect y="26.67" width="60" height="13.33" fill="#21468B"/></svg>',
+    de: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="13.33" fill="#000"/><rect y="13.33" width="60" height="13.33" fill="#DD0000"/><rect y="26.67" width="60" height="13.33" fill="#FFCE00"/></svg>',
+    pl: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#FFF"/><rect y="20" width="60" height="20" fill="#DC143C"/></svg>',
+    fr: '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="60" height="40" fill="#FFF"/><rect width="20" height="40" fill="#002395"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>'
+  };
+
+  /* Harvest English from the page itself */
+  T.en = T.en || {};
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    T.en[el.getAttribute('data-i18n')] = el.tagName === 'TITLE' ? el.textContent : el.innerHTML;
+  });
+
+  function t(key, lang) {
+    return (T[lang] && T[lang][key]) || (T.en && T.en[key]) || null;
+  }
+
+  function detectLang() {
+    try {
+      var saved = localStorage.getItem('ilc-flp-lang');
+      if (saved && LANGS.indexOf(saved) !== -1) return saved;
+    } catch (e) {}
+    var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    return LANGS.indexOf(nav) !== -1 ? nav : 'en';
+  }
+
+  function applyLang(lang) {
+    if (LANGS.indexOf(lang) === -1) return;
+    document.documentElement.lang = lang === 'en' ? 'en-GB' : lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var val = t(el.getAttribute('data-i18n'), lang);
+      if (val == null) return;
+      if (el.tagName === 'TITLE') { el.textContent = val; } else { el.innerHTML = val; }
+    });
+    document.querySelectorAll('.lang-btn .code').forEach(function (el) { el.textContent = lang.toUpperCase(); });
+    document.querySelectorAll('.lang-btn .flag').forEach(function (el) { el.innerHTML = FLAGS[lang] || ''; });
+    document.querySelectorAll('.lang-menu button').forEach(function (b) {
+      b.setAttribute('aria-current', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+    try { localStorage.setItem('ilc-flp-lang', lang); } catch (e) {}
+  }
+
+  /* Flags in the dropdown options */
+  document.querySelectorAll('.lang-menu button').forEach(function (b) {
+    var flag = FLAGS[b.getAttribute('data-lang')];
+    if (flag && !b.querySelector('.flag')) {
+      b.innerHTML = '<span class="flag" aria-hidden="true">' + flag + '</span><span>' + b.textContent + '</span>';
+    }
+  });
+
+  /* Open/close + selection */
+  var sw = document.querySelector('.lang-switch');
+  var btn = sw.querySelector('.lang-btn');
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = sw.dataset.open === 'true';
+    sw.dataset.open = String(!open);
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+  sw.querySelectorAll('.lang-menu button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      applyLang(b.getAttribute('data-lang'));
+      sw.dataset.open = 'false';
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function () {
+    sw.dataset.open = 'false';
+    btn.setAttribute('aria-expanded', 'false');
+  });
+
+  applyLang(detectLang());
+})();
+</script>
 </body>
 </html>
